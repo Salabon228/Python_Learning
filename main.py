@@ -1,27 +1,23 @@
-def transposition(matrix: list[int]) -> list[int]:
-    # Определение размеров исходной матрицы
-    rows = len(matrix)
-    cols = len(matrix[0])
+def twoSum(self, nums: list[int], target: int) -> list[int]:
+    """
+    :type nums: List[int]
+    :type target: int
+    :rtype: List[int]
+    """
+    indexes = {}  # словарь для хранения значений и соответствующих им индексов
+    for i in range(len(nums)):
+        complement = target_sum - nums[i]
+        if complement in indexes:
+            return [indexes[complement], i]
+        else:
+            indexes[nums[i]] = i
+    return None
 
-    # Создание пустой транспонированной матрицы
-    transposed_matrix = [[0 for _ in range(rows)] for _ in range(cols)]
-    for i in range(len(matrix)):
-        for j in range(len(matrix[0])):
-            transposed_matrix[j][i] = matrix[i][j]
-    return transposed_matrix
-
-
-matrix = [[0, 0, 0], [1, 1, 1], [2, 2, 2]]
-
-transposition(matrix)
-
-
-def print_matrix(data: list) -> None:
-    res = []
-    for i in data:
-        for j in i:
-            res.append(j)
-        print(i)
-
-print_matrix(transposition(matrix))
-
+# Пример использования
+my_list = [1, 2, 3, 4, 5, 6]
+target_sum = 9
+result = twoSum(my_list, target_sum=9)
+if result:
+    print(f"Индексы элементов сумма которых равна {target_sum}: {result}")
+else:
+    print(f"Пара элементов сумма которых равна {target_sum} не найдена.")
